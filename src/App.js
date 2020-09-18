@@ -33,7 +33,7 @@ userEffect(() => {
     axios.get('https://randomuser.me/api?results=20')
     .then(({ data: { results } }) => {
         let employees = results.map(user => ({
-            name: employee.name.first + '' + employee.name.last,
+            name: `${employee.name.first} ${employee.name.last}`,
             phone: employee.phone,
             email: employee.email,
             gender: employee.gender
