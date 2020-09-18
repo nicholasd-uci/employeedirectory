@@ -9,14 +9,20 @@ const [employeeState, setEmployeeState] = useState({
     employees: [],
     columns: [
         {
+            Header: 'Photo',
+            accessor: 'photo'
+        },
+        {
+            Header: 'Username',
+            accessor: 'username'
+        },
+        {
             Header: 'Name',
-            accessor: 'name',
-            filterable: true
+            accessor: 'name'
         },
         {
             Header: 'Phone',
-            accessor: 'phone',
-            filterable: true
+            accessor: 'phone'
         },
         {
             Header: 'Email',
@@ -29,11 +35,13 @@ const [employeeState, setEmployeeState] = useState({
     ]
 })
 
-userEffect(() => {
+useEffect(() => {
     axios.get('https://randomuser.me/api?results=20')
-    .then(({ data: { results } }) => {
-        let employees = results.map(user => ({
-            name: `${employee.name.first} ${employee.name.last}`,
+    .then(({ data }) => {
+        let employees = data.results.map(employee => ({
+            photo:  `${employee.picture.medium}`,
+            username: employee.login.username,
+            name: employee.name.first + ' ' + employee.name.last,
             phone: employee.phone,
             email: employee.email,
             gender: employee.gender
