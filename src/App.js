@@ -50,7 +50,7 @@ useEffect(() => {
     axios.get('https://randomuser.me/api?results=20')
     .then(({ data }) => {
         let employees = data.results.map(employee => ({
-            photo: <img src="`${employee.picture.medium}`"/>,
+            photo: <img src="`${employee.picture.medium}`" alt="EEphoto"/>,
             name: employee.name.first + ' ' + employee.name.last,
             username: employee.login.username,
             phone: employee.phone,
